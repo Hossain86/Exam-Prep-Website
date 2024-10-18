@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Awesome Exam App With Fixed Time</title>
+  <link rel="stylesheet" href="css/Quiz.css">
+  <link rel="stylesheet" href="css/Navbar.css">
+  <style>
+    body{
+      background-color: #f1f1f1;
+      background-image: url(img/exam-backgroung-01.png);
+      background-size: cover;
+      z-index: -1;
+    }
+  
+    .navbar{
+      background-image: url(img/horizonal-navbar.png);
+      background-size: cover;
+      background-color: black;
+      color: #fff;
+      padding: 5px 10px 5px 5px;
+      position: fixed;
+      top: 0;
+      z-index: 10;
+    }
+    .sidenav{
+      background-image: url(img/navbar-2.png);
+      background-size: cover;
+      backdrop-filter: blur(10px);
+      z-index: 15;
+    }
+    .sidenav a{
+      font-size: 24px;
+    }
+    @media screen and (max-width:650px){
+      body{
+      background-image: url(img/exam-2mobile.png);
+      background-size: cover;
+      }
+      .navbar{
+        background-image: url(img/horizonal-navbar.png);
+        background-size: cover;
+      }
+    }
+      
+  
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+<body>
+
+  <nav>
+    <div class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="profile.html"><img src="img/user-2.png" class="nav-img"></a>
+      <a href="welcome.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="about-us.html">About</a>
+      <a href="about-us.html">Contact</a>
+      <a href="#"class="btn2" onclick="logout()">Logout</a>
+    </div>
+    <div class="navbar">
+      <span class="open" style="font-size: 20px;">&#9776; Open</span>
+      <h2 style="cursor: pointer;" onclick='window.location.href="welcome.html";'>The Ultimate Exam Website</h2>
+      <a class="navbar-href" href="profile.html"><img src="img/user-2.png" title="Profile" class="nav-img2"></a>
+    </div>
+  </nav>
+
+
+ <div class="RulesBox">
+  <div class="RulesTitle">Some Rules of this Quiz</div>
+<div class="RulesList">
+   <ol>
+       <li>You will have only <span style="color: red;font-weight:bold;">10 minutes</span> for the test. Within the given time You have to submit the quiz.</li>
+       <li>You can select any option of a question.  But selecting multiple option isn't allowed.</li>
+       <li><b>Once the time runs off the Quiz will be automatically submitted.</b></li>
+       <li>You can't select any option once time goes off.</li>
+       <li> You can't exit from the Quiz while you're playing.</li>
+       <li>You'll get points on the basis of your correct answers.</li>
+   </ol>
+  </div>
+
+  <div class="Buttons">
+  <button class="ExitButton">Exit Quiz</button>
+  <button class="ContinueButton">Continue</button>
+  </div>
+</div> 
+<footer style="margin: 50px;"></footer>
+<script src="js/Quiz.js"></script>
+<script src="js/Navbar.js"></script>
+</body>
+</html>

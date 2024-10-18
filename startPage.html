@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Exam</title>
+  <style>
+    body{
+      padding: 50px;
+      text-align: center;
+    }
+    .startexam{
+      width: 180px;
+      height: 50px;
+      margin: 25px;
+      background-color: rgb(94, 75, 61);
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+<body>
+  <button class="startexam" 
+  onclick="loadexam()"
+  >Start Exam</button>
+
+  <script>
+    function loadexam(){
+      window.location.href="QuestionSheet.html"
+    }
+  </script>
+</body>
+</html>

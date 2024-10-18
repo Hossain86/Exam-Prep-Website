@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Sheet</title>
+  <link rel="stylesheet" href="css/QuestionSheet.css">
+  <link rel="stylesheet" href="css/Navbar.css">
+  <style>
+    .navbar{
+      background-image: url(img/horizonal-navbar.png);
+      background-size: cover;
+      background-color: black;
+      color: #fff;
+
+    }
+    .sidenav{
+      height: 100%;
+      width:0 ;
+      position: fixed;
+      z-index: 1;
+      backdrop-filter: blur(10px);
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      transition: 0.5s;
+      padding-top: 40px;
+      background-image: url(img/navbar-2.png);
+      background-size: cover;
+    }
+    .sidenav a{
+      padding: 20px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 500;
+      opacity: 1;
+      color: black;
+      display: block;
+      transition: 0.3s;
+    }
+    @media screen and (max-width:650px){
+      body{
+      background-image: url(img/exam-2mobile.png);
+      background-size: cover;
+      }
+    }
+    
+    </style>
+</head>
+<body>
+  <nav>
+    <div class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="profile.html"><img src="img/user-2.png" class="nav-img"></a>
+      <a href="welcome.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="about-us.html">About</a>
+      <a href="about-us.html">Contact</a>
+      <a href="#"class="btn2" onclick="logout()">Logout</a>
+    </div>
+    <div class="navbar">
+      <span class="open" style="font-size: 20px;">&#9776; Open</span>
+      <h2 style="cursor: pointer;" onclick='window.location.href="welcome.html";'>The Ultimate Exam Website</h2>
+      <a class="navbar-href" href="profile.html"><img src="img/user-2.png" title="Profile" class="nav-img2"></a>
+    </div>
+  </nav>
+
+  <div class="main">
+    <div class="timer">
+    <center class="timecount">Time</center></div>
+    <p class="result"></p>
+    <div class="allquestions">
+
+      
+    </div>
+
+  </div>
+  <center><button id="submit">Submit</button></center>
+
+  <script src="js/Navbar.js"></script>
+  <script src="js/script.js"></script>
+  <script type="module" src="js/Quiz-data.js"></script>
+  <script src="js/QuestionAnswer.js"></script>
+</body>
+</html>

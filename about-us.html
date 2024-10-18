@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="css/about-us.css">
+    <link rel="stylesheet" href="css/Navbar.css">
+    <style>
+      .navbar{
+        background-image: url(img/horizonal-navbar.png);
+        background-size: cover;
+        background-color: black;
+        color: #fff;
+        padding: 5px 10px 5px 5px;
+        position: fixed;
+        top: 0;
+      }
+      .sidenav{
+        background-image: url(img/navbar-2.png);
+        background-size: cover;
+        backdrop-filter: blur(10px);
+      }
+      .sidenav a{
+        font-size: 24px;
+        padding-top: 25px;
+      }
+      .navbar h2{
+        color: white;
+      }
+        @media screen and (max-width:650px){
+          body{
+          background-image: url(img/exam-2mobile.png);
+          background-size: cover;
+          }
+        }
+        
+        </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <script defer src="js/about-us.js"></script>
+</head>
+<body>
+    <!-- Navbar Code goes here -->
+  <nav>
+    <div class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="profile.html"><img src="img/user-2.png" class="nav-img"></a>
+      <a href="welcome.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="about-us.html">About</a>
+      <a href="about-us.html">Contact</a>
+      <a href="#"class="btn2" onclick="logout()">Logout</a>
+    </div>
+    <div class="navbar">
+      <span class="open" style="font-size: 20px;">&#9776; Open</span>
+      <h2 style="cursor: pointer;" onclick='window.location.href="welcome.html";'>The Ultimate Exam Website</h2>
+      <a class="navbar-href" href="profile.html"><img src="img/user-2.png" title="Profile" class="nav-img2"></a>
+    </div>
+  </nav>
+
+    <main>
+        <section id="project-description">
+            <h1>About This Project</h1>
+            <p>This project is a comprehensive web application that provides users with various educational resources. Key features include:</p>
+            <ul>
+                <li>Login and Register Page</li>
+                <li>Home Page</li>
+                <li>Subject and Topic Selection</li>
+                <li>Exam features</li>
+                <li>User Profile</li>
+                <li>Leaderboard</li>
+            </ul>
+        </section>
+
+        <section id="developer-info">
+            <h2>About the Developer</h2>
+            <p>Hi, I'm <strong>Aftab Hossain Mikat</strong>, CSE student at Rajshahi University of Engineering and Technology. I am a passionate web developer. I specialize in creating dynamic, user-friendly web applications using <b>HTML, CSS, and JavaScript, React & Typescript.</b></p>
+        </section>
+
+        <section id="contact-info">
+            <h2>Contact Information </h2>
+            <p>You can reach me at:</p>
+            <ul>
+                <li>Email: mdmikat626@gamil.com</li>
+                <li>Phone: +018 XXX XXXX</li>
+            </ul>
+        </section> 
+
+        <section id="contact-form">
+            <h2>Send Me an Email</h2>
+            <form id="email-form" action="mail.php" method="POST">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+          
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+          
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" required></textarea>
+          
+              <button type="submit">Send</button>
+          </form>
+          <div id="form-status"></div>
+          
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mikat. All rights reserved.</p>
+    </footer>
+</body>
+</html>

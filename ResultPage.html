@@ -1,0 +1,162 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Result</title>
+  <link rel="stylesheet" href="css/QuestionSheet.css">
+  <link rel="stylesheet" href="css/Navbar.css">
+  <style>
+    .resultpage{
+      display: grid;
+      justify-content: center;
+      padding: 10px;
+      margin-top: 80px;
+    }
+    .resdata {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(157, 216, 159, 0.827);
+      padding: 10px 50px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    }
+    
+    .resdata button{
+      width: 220px;
+      height: 40px;
+      margin: 10px;
+      background-color: black;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+    }
+    .showAnsSheet{
+      width: 90%;
+      padding-left: 10px;
+    }
+    .navbar{
+      background-image: url(img/horizonal-navbar.png);
+      background-size: cover;
+      background-color: black;
+      color: #fff;
+      padding: 5px 10px 5px 5px;
+      position: fixed;
+      top: 0;
+    }
+    .sidenav{
+      background-image: url(img/navbar-2.png);
+      background-size: cover;
+      backdrop-filter: blur(10px);
+    }
+    .sidenav a{
+      font-size: 24px;
+      padding-top: 25px;
+    }
+    .message{
+      font-weight: bold;
+      padding: 20px 0px;
+    }
+    @media screen and (max-width:650px){
+      body{
+      background-image: url(img/exam-2mobile.png);
+      background-size: cover;
+      }
+      .navbar{
+        background-image: url(img/horizonal-navbar.png);
+        background-size: cover;
+      }
+    }
+      
+    
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="profile.html"><img src="img/user-2.png" class="nav-img"></a>
+      <a href="welcome.html">Home</a>
+      <a href="profile.html">Profile</a>
+      <a href="leaderboard.html">Leaderboard</a>
+      <a href="about-us.html">About</a>
+      <a href="about-us.html">Contact</a>
+      <a href="#"class="btn2" onclick="logout()">Logout</a>
+    </div>
+    <div class="navbar">
+      <span class="open" style="font-size: 20px;">&#9776; Open</span>
+      <h2 style="cursor: pointer;" onclick='window.location.href="welcome.html";'>The Ultimate Exam Website</h2>
+      <a class="navbar-href" href="profile.html"><img src="img/user-2.png" title="Profile" class="nav-img2"></a>
+    </div>
+  </nav>
+
+  <div class="resultpage">
+
+    <div class="resdata">
+      <h2 class="showresult">Result</h2>
+      <p class="congrats">Nice</p>
+      <h3 class="tq">Total Questions: </h3>
+      <h3 class="ra">Right Answer: </h3>
+      <h3 class="wa">Wrong Answer: </h3>
+      <button
+      onclick="window.location.href=`Quiz.html`"
+      >Take Exam Again
+      </button>
+      <button
+      onclick="window.location.href=`welcome.html`"
+      >Reurn To the Home
+      </button>
+    </div>
+    <center><h2>Correct Answer Of All Questions</h2></center>
+    <div class="showAnsSheet">
+
+    </div>
+
+  </div>
+  
+  <script src="js/Navbar.js"></script>
+  <script type="module" src="js/Quiz-data.js"></script>
+  <script src="js/QuestionAnswer.js"></script>
+  <script>
+    const totalcorrect=localStorage.getItem("totalcorrect");
+    const totalquestions=localStorage.getItem("totalquestions")
+    const tq=document.querySelector(".tq")
+    const ra=document.querySelector(".ra")
+    const wa=document.querySelector(".wa")
+
+    const showresult=document.querySelector(".showresult")
+    const showAnsSheet=document.querySelector(".showAnsSheet")
+    const congrats=document.querySelector(".congrats")
+
+    showresult.textContent=`Total Score= ${totalcorrect} / ${totalquestions}`
+    
+    if(totalcorrect>=6){
+      congrats.textContent=`✨✨🎉Nice Performance. Keep it Up!✨✨🎉`
+    }else{
+      congrats.textContent=`Opps! You have Try more hard 💪💪`
+    }
+    tq.textContent=`Total Questions: ${totalquestions}`
+    ra.textContent=`Right Answer: ${totalcorrect}`
+    wa.textContent=`Wrong Answer:  ${totalquestions -totalcorrect}`
+
+    
+    for(index=0;index<questions.length;index++){
+      const Question=document.createElement("div")
+      Question.classList.add("Question")
+      Question.innerHTML=`
+      <p class="eachquestion">${questions[index].numb}. ${questions[index].question}</p>
+        <div class="options">
+          <p>Correct ans: ${questions[index].options[questions[index].answerNum - 1]}</p>
+        </div>
+      `
+      showAnsSheet.appendChild(Question)
+    }
+
+  </script>
+</body>
+</html>

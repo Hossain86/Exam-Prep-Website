@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <link rel="stylesheet" href="css/Navbar.css">
+    <style>
+        .navbar{
+          background-image: url(img/horizonal-navbar.png);
+          background-size: cover;
+          background-color: black;
+          color: #fff;
+          padding: 5px 10px 5px 5px;
+          position: fixed;
+          top: 0;
+        }
+        .sidenav{
+          background-image: url(img/navbar-2.png);
+          background-size: cover;
+          backdrop-filter: blur(10px);
+        }
+        .sidenav a{
+          font-size: 24px;
+          padding-top: 25px;
+        }
+      @media screen and (max-width:650px){
+        body{
+        background-image: url(img/exam-2mobile.png);
+        background-size: cover;
+        }
+      }
+      
+      </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+</head>
+<body>
+    <!-- Navbar Code goes here -->
+    <nav>
+        <div class="sidenav">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <a href="profile.html"><img src="img/user-2.png" class="nav-img"></a>
+          <a href="#" onclick="window.location.reload()">Home</a>
+          <a href="profile.html">Profile</a>
+          <a href="leaderboard.html">Leaderboard</a>
+          <a href="about-us.html">About</a>
+          <a href="about-us.html">Contact</a>
+          <a href="#" class="btn2" onclick="logout()">Logout</a>
+        </div>
+        <div class="navbar">
+          <span class="open" style="font-size: 20px;">&#9776; Open</span>
+          <h2 style="cursor: pointer;" onclick='window.location.href="welcome.html";'>The Ultimate Exam Website</h2>
+          <a class="navbar-href" href="profile.html"><img src="img/user-2.png" title="Profile" class="nav-img2"></a>
+        </div>
+      </nav>
+      <div class="text">
+        <h2 style="text-align: center;padding: 15px;margin-top: 10px;">🎉✨Leaderboard ✨🎉</h2>
+      </div>
+
+    <div class="container mt-3">
+        <table class="table table-dark">
+            <thead>
+                <th>Rank</th>
+                <th>Name</th>
+                <!-- <th>Mobile</th> -->
+                <th>School</th>
+                <!-- <th>Email</th> -->
+                <th>Progress</th>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+    </div>
+
+
+    <script type="module">
+
+      const btn2=document.querySelector(".btn2");
+      btn2.onclick= function logout(){
+        auth.signOut(auth).then(() => {
+            // Sign-out successful.
+            alert('Signout Successfull');
+          }).catch((error) => {
+            // An error happened.
+            alert("Unsuccessfull"+ error);
+          });
+      }
+        var stdNo=0;
+        var tbody=document.getElementById('tbody1');
+
+        function AddItemToTable(name,roll,sec,gen,progress){
+            let trow=document.createElement("tr");
+            let td1=document.createElement('td');
+            let td2=document.createElement('td');
+            let td3=document.createElement('td');
+            let td4=document.createElement('td');
+            let td5=document.createElement('td');
+            // let td6=document.createElement('td');
+
+            td1.innerHTML=++stdNo;
+            td2.innerHTML=name;
+            td3.innerHTML=roll;
+            //td4.innerHTML=sec;
+            td5.innerHTML=gen;
+            //td6.innerHTML=progress;
+
+            trow.appendChild(td1);
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            // trow.appendChild(td4);
+            trow.appendChild(td5);
+            //trow.appendChild(td6);
+
+            tbody.appendChild(trow);
+        }
+
+        function AddAllItemToTable(TheStudent){
+            TheStudent.reverse();
+            stdNo=0;
+            tbody.innerHTML="";
+            TheStudent.forEach(element => {
+                AddItemToTable(element.name,element.school,element.email,element.progress);
+            });
+        }
+
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyBT_nTb-N1H8CdKf4OrUHwZYRKzLPI1kT8",
+            authDomain: "loginresistration.firebaseapp.com",
+            databaseURL: "https://loginresistration-default-rtdb.firebaseio.com",
+            projectId: "loginresistration",
+            storageBucket: "loginresistration.appspot.com",
+            messagingSenderId: "912766266396",
+            appId: "1:912766266396:web:2a95c6227133c41dab83d9"
+        };
+        const app = initializeApp(firebaseConfig);
+        import { getDatabase, ref, child, onValue, get,
+            query, limitToFirst, limitToLast, orderByChild,
+            startAt, startAfter, endAt, endBefore, equalTo
+         } 
+        from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+        const db=getDatabase();
+        //get all data from firebase
+
+        function GetAllDataOnce(){
+            const que = query(ref(db,"AllStudent"),orderByChild("progress"));
+
+            get(que)
+            .then((snapshot)=>{
+                var students=[];
+
+                snapshot.forEach(childSnapshot=>{
+                    students.push(childSnapshot.val());
+                });
+                AddAllItemToTable(students);
+            });
+        }
+
+
+        window.onload=GetAllDataOnce;
+
+
+    let openNavElement=document.querySelector('.open');
+    let closeNavElement=document.querySelector('.closebtn');
+    let sidenavElement=document.querySelector('.sidenav');
+    openNavElement.onclick=function(){
+      sidenavElement.style.width="200px";
+    } 
+    closeNavElement.onclick=function(){
+      sidenavElement.style.width="0";
+    }
+    window.onclick=function(event){
+      if(event.target !== sidenavElement && event.target !== openNavElement){
+        sidenavElement.style.width="0";
+      }
+    }
+    </script>
+</body>
+</html>

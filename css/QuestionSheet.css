@@ -1,0 +1,109 @@
+*{
+  font-family: 'Times New Roman', Times, serif;
+}
+body{
+  margin-bottom: 80px;
+}
+.main{
+  margin: 0;
+  padding: 0px 0px;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  background-color: white;
+}
+.timer{
+  display: grid;
+  justify-items: center;
+  padding-bottom: 10px;
+}
+
+.timecount {
+  padding: 8px 20px;
+  width: 30%;
+  height: 30px;
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  word-spacing: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  position: fixed;        /* Make the timer fixed at the top */
+  top: 10px;              /* Position it near the top */
+  left: 50%;              /* Center the timer horizontally */
+  transform: translateX(-50%);  /* Offset by half its width for centering */
+  z-index: 1000;  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);        /* Higher z-index to ensure it's on top of navbar */
+}
+
+
+#submit{
+  width: 160px;
+  height: 40px;
+  margin: 25px 20px 120px 20px;
+  background-color: rgb(249, 87, 59);
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+#submit:hover {
+  opacity: 0.8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.allquestions{
+  font-size: 20px;
+  width: 80%;
+  padding:0px;
+}
+.Question{
+  background-color: #f1f1f1;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.options{
+  font-size: 18px;
+  line-height: 1.8;
+}
+.options label{
+
+}
+.eachquestion{
+  font-weight: bold;
+}
+@media screen and (max-width:750px){
+  .allquestions{
+    width: 90%;
+  }
+  .timecount{
+   width: 60%;  
+   height: auto;
+   font-size: 16px;
+  }
+  .eachquestion{
+    font-size: 18px;
+    padding: 0;
+  }
+  .Question{
+    padding-left: 10px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    margin: 4px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .options{
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  
+}
