@@ -10,5 +10,5 @@ exitbutton.onclick=()=>{
   window.location.href="welcome.html";
 }
 ContinueButton.onclick=()=>{
-  window.location.href="/QuestionSheet.html"
+  window.location.href="QuestionSheet.html"
 }
